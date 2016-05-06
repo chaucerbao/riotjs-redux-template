@@ -2,11 +2,11 @@
 import loadRoutes from "./routes";
 import store from "./store";
 
-// Styles
-import "normalize.css/normalize";
-import "./style";
+// Mount the app
+import "app";
+riot.mount("app");
 
-// Routing
+// Start routing
 riot.route.base("/");
 const routes = loadRoutes(".site__body", store);
 for (const route in routes) {
