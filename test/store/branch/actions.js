@@ -71,7 +71,9 @@ describe("Branch's", () => {
               updatedAt: 1234567890,
               items: [{ id: 1 }]
             }]);
-          }).then(done);
+          })
+          .then(done)
+          .catch(done);
       });
 
       it("dispatches a FETCH_ITEMS_FAILED action on failure", done => {
@@ -96,7 +98,8 @@ describe("Branch's", () => {
               message: "Server unable to process request"
             }]);
           })
-          .then(done);
+          .then(done)
+          .catch(done);
       });
 
       describe("cache", () => {
@@ -118,7 +121,8 @@ describe("Branch's", () => {
               expect(http.isDone()).to.be.false;
               expect(store.getActions()).to.deep.equal([]);
             })
-            .then(done);
+            .then(done)
+            .catch(done);
         });
 
         it("dispatches a RECEIVE_ITEMS action on hit", done => {
@@ -145,7 +149,8 @@ describe("Branch's", () => {
                 items: [{ id: 2 }]
               }]);
             })
-            .then(done);
+            .then(done)
+            .catch(done);
         });
       });
     });
