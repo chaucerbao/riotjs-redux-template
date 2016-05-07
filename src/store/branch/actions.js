@@ -4,6 +4,7 @@ import fetch from "isomorphic-fetch";
 const baseUrl = "http://jsonplaceholder.typicode.com";
 const cacheFor = 300;
 
+// Action creators
 export const REQUEST_ITEMS = "REQUEST_ITEMS";
 export function requestItems() {
   return {
@@ -20,12 +21,21 @@ export function receiveItems(items) {
   }
 }
 
+export const FETCH_ITEMS_FAILED = "FETCH_ITEMS_FAILED";
+function fetchItemsFailed(e) {
+  return {
+    type: FETCH_ITEMS_FAILED,
+    message: e.message
+  }
+}
+
+// Asynchronous actions
 export function fetchItems() {
   return (dispatch, getState) => {
     const branch = getState().branch;
 
     // Check the cache first
-    if (Date.now() - branch.updatedAt < cacheFor * 1000) {
+    if (Date.now() - Number(branch.updatedAt) < cacheFor * 1000) {
       return Promise.resolve();
     }
 
@@ -42,12 +52,4 @@ export function fetchItems() {
       .then(items => dispatch(receiveItems(items)))
       .catch(e => dispatch(fetchItemsFailed(e)));
   };
-}
-
-export const FETCH_ITEMS_FAILED = "FETCH_ITEMS_FAILED";
-function fetchItemsFailed(e) {
-  return {
-    type: FETCH_ITEMS_FAILED,
-    message: e.message
-  }
 }
