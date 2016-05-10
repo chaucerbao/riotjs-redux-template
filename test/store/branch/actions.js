@@ -125,7 +125,7 @@ describe("Branch's", () => {
             .catch(done);
         });
 
-        it("dispatches a RECEIVE_ITEMS action on hit", done => {
+        it("dispatches a REQUEST_ITEMS action on miss", done => {
           const store = mockStore({
             branch: {
               isLoading: false,
