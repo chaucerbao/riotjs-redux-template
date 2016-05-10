@@ -3,7 +3,7 @@ import { expect } from "chai";
 
 // Test item
 import { REQUEST_ITEMS, RECEIVE_ITEMS, FETCH_ITEMS_FAILED } from "../../../src/store/branch/actions.js";
-import reducer from "../../../src/store/branch/reducers.js";
+import reducer from "../../../src/store/branch/reducer.js";
 
 describe("Branch's reducer", () => {
   it("returns the initial state", () => {

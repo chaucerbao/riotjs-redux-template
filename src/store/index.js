@@ -3,7 +3,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
 // Reducers
-import branch from "./branch/reducers";
+import branch from "./branch/reducer";
 
 const reducers = {
   branch
